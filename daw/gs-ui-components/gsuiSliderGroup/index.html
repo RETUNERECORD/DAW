@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1"/>
+<link rel="shortcut icon" href="/assets/favicon.png"/>
+<link rel="stylesheet" href="/assets/fonts/fonts.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsui.css"/>
+<link rel="stylesheet" href="/gs-ui-components/test-assets/test.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiDragshield/gsuiDragshield.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"/>
+<style>
+body {
+	--test-content-w: 440px;
+	--test-content-h: 200px;
+}
+gsui-slidergroup {
+	background-color: #456168;
+}
+</style>
+</head>
+<body>
+
+<!-- ....................................................................... -->
+<div id="TEST">
+	<gsui-slidergroup beatlines=""></gsui-slidergroup>
+</div>
+
+<!-- ....................................................................... -->
+<script src="/gs-wa-components/gswaSlicer/gswaSlicer.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsui.js"></script>
+<script src="/gs-ui-components/test-assets/test.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiDragshield/gsuiDragshield.js"></script>
+<script src="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.html.js"></script>
+<script src="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.html.js"></script>
+<script src="/gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.js"></script>
+
+<!-- ....................................................................... -->
+<script>
+const grp = document.querySelector( "gsui-slidergroup" );
+
+// grp.options( { min: -1, max: 1, step: .025, def: 0 } );
+grp.options( { min: 0, max: 1, step: .025, def: .8 } );
+
+grp.set( "a", 1.0, .25, .5 );
+grp.set( "b", 1.5, .25, .6 );
+grp.set( "c", 2.0, .25, .7 );
+grp.set( "d", 2.5, .25, .8 );
+grp.set( "e", 3.0, .50, .9 );
+
+grp.set( "f", 4.00, .25, .5 );
+grp.set( "g", 4.25, .25, .6 );
+grp.set( "h", 4.50, .25, .7 );
+grp.set( "i", 4.75, .25, .8 );
+
+// grp.setProp( "a", "selected", true );
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "retunerecord",
+  "version": "1.0.0",
+  "description": "DAW",
+  "main": "serviceWorker.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RETUNERECORD/DAW.git"
+  },
+  "keywords": [
+    "RETUNERECORD"
+  ],
+  "author": "RETUNERECORD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RETUNERECORD/DAW/issues"
+  },
+  "homepage": "https://github.com/RETUNERECORD/DAW#readme"
+}

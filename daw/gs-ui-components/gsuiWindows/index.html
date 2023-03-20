@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1"/>
+<link rel="shortcut icon" href="/assets/favicon.png"/>
+<link rel="stylesheet" href="/assets/fonts/fonts.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsui.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiIcon/gsuiIcon.css"/>
+<link rel="stylesheet" href="/gs-ui-components/test-assets/test.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiDragshield/gsuiDragshield.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiWindows/gsuiWindow.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiWindows/gsuiWindow.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiWindows/gsuiWindows.css"/>
+
+<!-- ....................................................................... -->
+<style>
+body {
+	--test-content-w: 560px;
+	--test-content-h: 400px;
+}
+gsui-windows {
+	background-color: #111;
+}
+</style>
+</head>
+<body>
+
+<!-- ....................................................................... -->
+<div id="TEST">
+	<gsui-windows></gsui-windows>
+</div>
+<div id="TEST-CTRLS">
+	<label>
+		<input id="lowGraphics" type="checkbox"/>
+		<span>low graphics</span>
+	</label>
+	<div>
+		<button id="winA">winA</button>
+		<button id="winB">winB</button>
+		<button id="winC">winC</button>
+	</div>
+	<div>
+		<button id="addContent">addContent</button>
+	</div>
+</div>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsui.js"></script>
+<script src="/gs-ui-components/test-assets/test.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiDragshield/gsuiDragshield.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiWindows/gsuiWindow.html.js"></script>
+<script src="/gs-ui-components/gsuiWindows/gsuiWindow.js"></script>
+<script src="/gs-ui-components/gsuiWindows/gsuiWindows.js"></script>
+
+<!-- ....................................................................... -->
+<script>
+const wins = document.querySelector( "gsui-windows" );
+const addBtn = document.querySelector( "#addContent" );
+const winA = wins.$createWindow( "winA" );
+const winB = wins.$createWindow( "winB" );
+const winC = wins.$createWindow( "winC" );
+
+document.querySelector( "#lowGraphics" ).onchange = e => wins.$setLowGraphics( e.target.checked );
+document.querySelector( "#winA" ).onclick = () => winA.$open();
+document.querySelector( "#winB" ).onclick = () => winB.$open();
+document.querySelector( "#winC" ).onclick = () => winC.$open();
+addBtn.onclick = () => {
+	winA.$contentAppend( GSUI.$createElement( "span", { class: "myContent" }, "A" ) );
+	winB.$contentAppend( GSUI.$createElement( "span", { class: "myContent" }, "B" ) );
+	winC.$contentAppend( GSUI.$createElement( "span", { class: "myContent" }, "C" ) );
+};
+
+GSUI.$setAttribute( winA, { x:  10, y: 10, w: 140, h: 100, icon: "osc-square", title: "Aaa" } );
+GSUI.$setAttribute( winB, { x: 160, y: 10, w: 140, h: 100, icon: "osc-square", title: "Bbb" } );
+GSUI.$setAttribute( winC, { x: 310, y: 10, w: 140, h: 100, icon: "osc-square", title: "Ccc" } );
+
+winA.$open();
+winB.$open();
+winC.$open();
+addBtn.onclick();
+</script>
+</body>
+</html>

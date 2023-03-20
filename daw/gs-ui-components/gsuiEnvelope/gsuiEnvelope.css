@@ -1,0 +1,79 @@
+gsui-envelope {
+	display: grid;
+	height: 100%;
+	min-height: 76px;
+	box-sizing: border-box;
+	padding: 6px;
+	grid-gap: 6px;
+	grid-template:
+		"attack hold  decay sustain release" 28px
+		"graph  graph graph graph   graph  " 1fr
+		/1fr    1fr   1fr   1fr      1fr;
+	font-family: var( --gsui-font );
+	background-color: var( --gsui-item-bg );
+	--gsuiSlider-lineColor: var( --gsuiEnvelope-ctrls-color );
+}
+
+/* .......................................................................... */
+.gsuiEnvelope-prop {
+	display: flex;
+	flex-direction: column;
+}
+.gsuiEnvelope-propLabel {
+	display: flex;
+	align-self: center;
+	align-items: baseline;
+	height: 20px;
+	font-size: 12px;
+	opacity: .5;
+	user-select: none;
+}
+.gsuiEnvelope-propValue::before {
+	content: "·";
+	margin: 0 2px;
+}
+.gsuiEnvelope-propValue {
+	font-family: var( --gsui-font-number );
+}
+.gsuiEnvelope-propContent {
+	flex: 1;
+	position: relative;
+}
+
+/* .......................................................................... */
+.gsuiEnvelope-attack {
+	grid-area: attack;
+}
+.gsuiEnvelope-hold {
+	grid-area: hold;
+}
+.gsuiEnvelope-decay {
+	grid-area: decay;
+}
+.gsuiEnvelope-sustain {
+	grid-area: sustain;
+}
+.gsuiEnvelope-release {
+	grid-area: release;
+}
+gsui-envelope .gsuiSlider-eventCatcher {
+	top: -26px;
+	bottom: -6px;
+}
+
+/* .......................................................................... */
+.gsuiEnvelope-graph {
+	grid-area: graph;
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: var( --gsuiEnvelope-wave-bg );
+}
+gsui-envelope gsui-envelope-graph {
+	position: absolute;
+	inset: 4px 0 0;
+	color: var( --gsuiEnvelope-wave-off );
+}
+gsui-envelope[ toggle ] gsui-envelope-graph {
+	color: var( --gsuiEnvelope-ctrls-color );
+}

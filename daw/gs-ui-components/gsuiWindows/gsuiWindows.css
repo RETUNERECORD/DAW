@@ -1,0 +1,7 @@
+gsui-windows {
+	display: block;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}

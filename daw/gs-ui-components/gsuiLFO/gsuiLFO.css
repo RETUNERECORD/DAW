@@ -1,0 +1,177 @@
+gsui-lfo {
+	display: grid;
+	height: 100%;
+	min-width: 300px;
+	min-height: 76px;
+	box-sizing: border-box;
+	padding: 6px;
+	grid-gap: 6px;
+	grid-template:
+		"type delay attack speed amp  " 28px
+		"type graph graph  graph graph" 1fr
+		/32px 1fr   1fr    1fr   1fr;
+	font-family: var( --gsui-font );
+	background-color: var( --gsui-item-bg );
+	--gsuiSlider-lineColor: var( --gsuiLFO-ctrls-color );
+	--gsuiLFO-ctrls-color: var( --gsui-col-gain );
+}
+
+/* .......................................................................... */
+.gsuiLFO-prop {
+	display: flex;
+	flex-direction: column;
+}
+.gsuiLFO-propLabel {
+	display: flex;
+	align-self: center;
+	align-items: baseline;
+	height: 20px;
+	font-size: 12px;
+	opacity: .5;
+	user-select: none;
+}
+.gsuiLFO-propValue::before {
+	content: "·";
+	margin: 0 2px;
+}
+.gsuiLFO-propValue {
+	font-family: var( --gsui-font-number );
+}
+.gsuiLFO-propContent {
+	flex: 1;
+	position: relative;
+}
+
+/* .......................................................................... */
+.gsuiLFO-btn {
+	position: relative;
+	cursor: pointer;
+}
+.gsuiLFO-btnInput {
+	position: absolute;
+	visibility: hidden;
+}
+.gsuiLFO-btnIcon {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* .......................................................................... */
+.gsuiLFO-delay {
+	grid-area: delay;
+}
+.gsuiLFO-attack {
+	grid-area: attack;
+}
+.gsuiLFO-speed {
+	grid-area: speed;
+}
+.gsuiLFO-amp {
+	grid-area: amp;
+}
+gsui-lfo .gsuiSlider-eventCatcher {
+	top: -26px;
+	bottom: -6px;
+}
+
+/* .......................................................................... */
+.gsuiLFO-graph {
+	grid-area: graph;
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: var( --gsuiLFO-wave-bg );
+}
+.gsuiLFO-ampSigns {
+	position: absolute;
+	inset: 0;
+	width: 10px;
+	display: flex;
+	pointer-events: none;
+	flex-direction: column;
+}
+gsui-lfo[ toggle ] .gsuiLFO-ampSigns {
+	pointer-events: auto;
+}
+.gsuiLFO-ampSign {
+	flex: 1;
+	background-color: var( --gsui-slider-bg-opaque );
+}
+gsui-lfo[ toggle ] .gsuiLFO-ampSign {
+	color: var( --gsuiLFO-ctrls-color );
+}
+.gsuiLFO-ampSignIcon {
+	color: var( --gsuiLFO-wave-off );
+	font-size: 11px;
+}
+gsui-lfo[ toggle ] .gsuiLFO-ampSignIcon {
+	color: var( --gsuiLFO-ctrls-color );
+}
+.gsuiLFO-ampSignRadio:checked + .gsuiLFO-ampSignIcon {
+	color: var( --gsuiLFO-ctrls-bg );
+	background-color: var( --gsuiLFO-wave-off );
+}
+gsui-lfo[ toggle ] .gsuiLFO-ampSignRadio:checked + .gsuiLFO-ampSignIcon {
+	background-color: var( --gsuiLFO-ctrls-color );
+}
+.gsuiLFO-wave {
+	position: absolute;
+	inset: 0 -2px 0 8px;
+	pointer-events: none;
+}
+.gsuiLFO-wave gsui-periodicwave {
+	position: absolute;
+	top: 6px;
+	height: calc( 100% - 12px );
+	color: var( --gsuiLFO-wave-off );
+	stroke-width: 2px;
+	transition: color .2s;
+}
+gsui-lfo[ toggle ] gsui-periodicwave {
+	color: var( --gsuiLFO-ctrls-color );
+}
+
+/* .......................................................................... */
+.gsuiLFO-type {
+	grid-area: type;
+}
+.gsuiLFO-type .gsuiLFO-propContent {
+	display: flex;
+	overflow: hidden;
+	border-radius: 4px;
+	flex-direction: column;
+}
+.gsuiLFO-typeBtn {
+	flex: 1;
+	cursor: not-allowed;
+	background-color: var( --gsuiSlider-lineBgColor );
+}
+gsui-lfo[ toggle ] .gsuiLFO-typeBtn {
+	cursor: pointer;
+}
+.gsuiLFO-typeSVG {
+	fill: none;
+	stroke: var( --gsuiLFO-wave-off );
+	stroke-width: 2px;
+	transition: .2s;
+	transition-property: stroke, background-color;
+}
+gsui-lfo[ toggle ] .gsuiLFO-typeSVG {
+	stroke: var( --gsuiLFO-ctrls-color );
+}
+.gsuiLFO-typeSVG path {
+	transform: scale( .6 );
+	transform-origin: center;
+}
+.gsuiLFO-typeRadio:checked + .gsuiLFO-typeSVG {
+	stroke: var( --gsuiLFO-ctrls-bg );
+	background-color: var( --gsuiLFO-wave-off );
+}
+gsui-lfo[ toggle ] .gsuiLFO-typeRadio:checked + .gsuiLFO-typeSVG {
+	background-color: var( --gsuiLFO-ctrls-color );
+}

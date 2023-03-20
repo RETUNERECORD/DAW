@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1"/>
+<link rel="shortcut icon" href="/assets/favicon.png"/>
+<link rel="stylesheet" href="/assets/fonts/fonts.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsui.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiIcon/gsuiIcon.css"/>
+<link rel="stylesheet" href="/gs-ui-components/test-assets/test.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiPopup/gsuiPopup.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiPopup/gsuiPopup.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiClock/gsuiClock.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiClock/gsuiClock.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiPanel/gsuiPanel.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiSlider/gsuiSlider.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiSpectrum/gsuiSpectrum.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-btn.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-cmp.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-dropdown.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-user.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-save.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-ctrl.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-time.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-hist.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-wins.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-help.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-area-vers.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-open.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-about.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-tempo.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-export.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"/>
+
+<!-- ....................................................................... -->
+<style>
+body {
+	--test-content-w: 1100px;
+	--test-content-h: 480px;
+	--test-content-resize: both;
+}
+#testWrap {
+	display: flex;
+}
+</style>
+</head>
+<body>
+
+<!-- ....................................................................... -->
+<div id="TEST">
+	<gsui-daw focus="up" bpm="120" timedivision="4/4"></gsui-daw>
+</div>
+
+<!-- ....................................................................... -->
+<script src="/gs-wa-components/gswaBPMTap/gswaBPMTap.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsui.js"></script>
+<script src="/gs-ui-components/test-assets/test.js"></script>
+<script src="/gs-ui-components/gsuiPopup/gsuiPopup.html.js"></script>
+<script src="/gs-ui-components/gsuiPopup/gsuiPopup.js"></script>
+<script src="/gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"></script>
+<script src="/gs-ui-components/gsuiClock/gsuiClock.html.js"></script>
+<script src="/gs-ui-components/gsuiClock/gsuiClock.js"></script>
+<script src="/gs-ui-components/gsuiPanel/gsuiPanel.js"></script>
+<script src="/gs-ui-components/gsuiSlider/gsuiSlider.html.js"></script>
+<script src="/gs-ui-components/gsuiSlider/gsuiSlider.js"></script>
+<script src="/gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-open.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-tempo.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js"></script>
+<script src="/gs-ui-components/gsuiDAW/gsuiDAW.js"></script>
+
+<!-- ....................................................................... -->
+<script>
+const el = document.querySelector( "gsui-daw" );
+
+GSUI.$setAttribute( el, "version", "3.14.15" );
+// GSUI.$setAttribute( el, "logged", true );
+// GSUI.$setAttribute( el, "logging", true );
+// GSUI.$setAttribute( el, "focus", "down" );
+GSUI.$setAttribute( el, "saved", false );
+GSUI.$setAttribute( el, "samplerate", 48000 );
+GSUI.$setAttribute( el, "uirate", 5 );
+// GSUI.$setAttribute( el, "windowslowgraphics", true );
+GSUI.$setAttribute( el, "duration", 8 );
+GSUI.$setAttribute( el, "bpm", 240 );
+GSUI.$setAttribute( el, "currentcomposition", "local:idLOCA" );
+
+el.addComposition( { id: "idLOCA", name: "my first compo", bpm: 105, duration: 16, options: { saveMode: "local" } } );
+el.addComposition( { id: "idLOCB", name: "a second compo", bpm: 90, duration: 24, options: { saveMode: "local" } } );
+el.addComposition( { id: "idONL1", name: "compo online", bpm: 135, duration: 21, options: { saveMode: "cloud" } } );
+el.addComposition( { id: "idONL2", name: "compo online 2", bpm: 135, duration: 21, options: { saveMode: "cloud" } } );
+el.deleteComposition( { id: "idONL1", name: "compo online", bpm: 135, duration: 21, options: { saveMode: "cloud" } } );
+
+GSUI.$setAttribute( el, "currentcomposition", "cloud:idONL2" );
+// GSUI.$setAttribute( el, "saving", true );
+
+el.toggleWindow( "main", true );
+el.toggleWindow( "mixer", false );
+
+el.stackAction( "mute", "shhhhhhhh..." );
+el.stackAction( "unmute", "make some noise" );
+el.stackAction( "plus", "add some love" );
+el.stackAction( "minus", "remove some hate" );
+el.stackAction( "pen", "rename stuff" );
+el.stackAction( "osc-sine", "synth params" );
+el.stackAction( "keys", "keyyyyysss" );
+el.stackAction( "arrows", "move elements" );
+el.stackAction( "slices", "slices stuff" );
+el.stackAction( "loop", "loop loop loooooooop" );
+el.stackAction( "mixer", "mixer changes" );
+el.stackAction( "redirect", "redirection -->" );
+el.undo();
+</script>
+</body>
+</html>

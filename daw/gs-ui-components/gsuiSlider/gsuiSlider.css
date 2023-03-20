@@ -1,0 +1,54 @@
+gsui-slider {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	outline: 0;
+	touch-action: none;
+	user-select: none;
+}
+
+gsui-slider[ disabled ] {
+	cursor: not-allowed;
+	--gsuiSlider-lineColor: #fff;
+}
+gsui-slider[ disabled ] .gsuiSlider-lineColor,
+gsui-slider[ disabled ] .gsuiSlider-svgLineColor {
+	opacity: .25;
+}
+
+.gsuiSlider-line,
+.gsuiSlider-eventCatcher {
+	position: absolute;
+	inset: 0;
+}
+
+.gsuiSlider-input,
+.gsuiSlider-linear .gsuiSlider-svg,
+.gsuiSlider-circular .gsuiSlider-line {
+	display: none;
+}
+
+.gsuiSlider-line {
+	overflow: hidden;
+	border-radius: var( --gsuiSlider-lineRadius, 2px );
+	background-color: var( --gsuiSlider-lineBgColor, #000 );
+}
+.gsuiSlider-lineColor {
+	position: absolute;
+	background-color: var( --gsuiSlider-lineColor, #fff );
+}
+
+.gsuiSlider-svg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+.gsuiSlider-svgLine,
+.gsuiSlider-svgLineColor {
+	fill: none;
+	transform-origin: center;
+}
+.gsuiSlider-svgLine { stroke: var( --gsuiSlider-lineBgColor, #000 ); }
+.gsuiSlider-svgLineColor { stroke: var( --gsuiSlider-lineColor, #fff ); }

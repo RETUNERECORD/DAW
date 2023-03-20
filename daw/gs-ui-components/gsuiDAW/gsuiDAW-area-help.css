@@ -1,0 +1,8 @@
+.gsuiDAW-areaHelp {
+	grid-area: areaHelp;
+	justify-content: end;
+}
+
+.gsuiDAW-btn[ data-action="about" ] {
+	--gsui-color: var( --gsuiDAW-about-color );
+}

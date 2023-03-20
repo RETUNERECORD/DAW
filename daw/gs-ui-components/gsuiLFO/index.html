@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1"/>
+<link rel="shortcut icon" href="/assets/favicon.png"/>
+<link rel="stylesheet" href="/assets/fonts/fonts.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsui.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiIcon/gsuiIcon.css"/>
+<link rel="stylesheet" href="/gs-ui-components/test-assets/test.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiSlider/gsuiSlider.css"/>
+
+<!-- ....................................................................... -->
+<link rel="stylesheet" href="/gs-ui-components/gsuiLFO/gsuiLFO.colors.default.css"/>
+<link rel="stylesheet" href="/gs-ui-components/gsuiLFO/gsuiLFO.css"/>
+
+<!-- ....................................................................... -->
+<style>
+body {
+	--test-content-w: 460px;
+	--test-content-h: 200px;
+}
+</style>
+</head>
+<body>
+
+<!-- ....................................................................... -->
+<div id="TEST">
+	<gsui-lfo toggle timedivision="4/4" type="sine" delay="0" attack="1" speed="1" amp="1"></gsui-lfo>
+</div>
+<div id="TEST-CTRLS">
+	<label>
+		<span>target</span>
+		<select id="lfoTarget">
+			<option value="gain">gain</option>
+			<option value="lowpass">lowpass</option>
+		</select>
+	</label>
+</div>
+
+<!-- ....................................................................... -->
+<script src="/gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js"></script>
+<script src="/assets/gswaPeriodicWavesList-v1.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsui.js"></script>
+<script src="/gs-ui-components/test-assets/test.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.html.js"></script>
+<script src="/gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"></script>
+<script src="/gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"></script>
+<script src="/gs-ui-components/gsuiSlider/gsuiSlider.html.js"></script>
+<script src="/gs-ui-components/gsuiSlider/gsuiSlider.js"></script>
+
+<!-- ....................................................................... -->
+<script src="/gs-ui-components/gsuiLFO/gsuiLFO.html.js"></script>
+<script src="/gs-ui-components/gsuiLFO/gsuiLFO.js"></script>
+
+<!-- ....................................................................... -->
+<script>
+const elLFO = document.querySelector( "gsui-lfo" );
+const elLFOtarget = document.querySelector( "#lfoTarget" );
+const waves = gswaPeriodicWaves.$loadWaves( gswaPeriodicWavesList );
+
+elLFOtarget.onchange = () => {
+	const t = elLFOtarget.value;
+
+	GSUI.$setAttribute( elLFO, "target", t );
+	GSUI.$setAttribute( elLFO, "lowpassfreq", t === "gain" ? null : .4 );
+};
+waves.forEach( ( w, name ) => gsuiPeriodicWave.addWave( name, w.real, w.imag ) );
+elLFO.updateWave();
+</script>
+</body>
+</html>

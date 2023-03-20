@@ -1,0 +1,196 @@
+gsui-oscillator {
+	display: grid;
+	position: relative;
+	box-sizing: border-box;
+	height: 100%;
+	min-width: 260px;
+	min-height: 60px;
+	background-color: var( --gsui-item-bg );
+	grid-template:
+		"grip .   .    .   .      .   .      .   .    .   .    ." 6px
+		"grip .   wave .   unison .   detune .   pan  .   gain ." 1fr
+		"grip .   .    .   .      .   .      .   .    .   .    ." 6px
+		/20px 6px 1fr  6px 32px   8px 36px   6px 36px 6px 36px 10px;
+	container-type: inline-size;
+	container-name: gsuiOscillator;
+}
+@container gsuiOscillator (max-width: 300px) {
+	.gsuiOscillator-grip {
+		background-color: black !important;
+	}
+}
+
+/* .......................................................................... */
+.gsuiOscillator-grip {
+	grid-area: grip;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	cursor: grab;
+	opacity: .6;
+	background-color: var( --gsuiOscillator-grip-bg );
+}
+
+/* .......................................................................... */
+.gsuiOscillator-prop {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2px;
+	--gsuiSlider-lineColor: currentColor;
+}
+.gsuiOscillator-pan { grid-area: pan; color: var( --gsuiOscillator-pan ); }
+.gsuiOscillator-gain { grid-area: gain; color: var( --gsuiOscillator-gain ); }
+.gsuiOscillator-detune { grid-area: detune; color: var( --gsuiOscillator-detune ); }
+.gsuiOscillator-sliderWrap {
+	position: relative;
+	box-sizing: border-box;
+	height: 32px;
+	min-height: 32px;
+}
+.gsuiOscillator-prop gsui-slider:first-child .gsuiSlider-eventCatcher {
+	bottom: -18px;
+}
+.gsuiOscillator-prop gsui-slider + gsui-slider {
+	position: absolute;
+	overflow: hidden;
+	border-radius: 50%;
+	top: calc( 50% - 8px );
+	left: calc( 50% - 8px );
+	width: 16px;
+	height: 16px;
+}
+.gsuiOscillator-prop gsui-slider + gsui-slider .gsuiSlider-eventCatcher {
+	border-radius: 50%;
+}
+.gsuiOscillator-sliderValue {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var( --gsui-font-number );
+	font-size: 12px;
+	pointer-events: none;
+}
+
+/* .......................................................................... */
+.gsuiOscillator-waveWrap {
+	grid-area: wave;
+	display: flex;
+	border-radius: 3px;
+	background-color: var( --gsuiOscillator-wave-bg );
+}
+.gsuiOscillator-waveWrap-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.gsuiOscillator-waveWrap-top {
+	display: flex;
+}
+.gsuiOscillator-wave {
+	flex: 1;
+	position: relative;
+}
+.gsuiOscillator-wave gsui-periodicwave {
+	position: absolute;
+}
+.gsuiOscillator-wave gsui-periodicwave:first-child { color: var( --gsuiOscillator-pan-a ); }
+.gsuiOscillator-wave gsui-periodicwave:last-child { color: var( --gsuiOscillator-pan-b ); }
+.gsuiOscillator-wave polyline {
+	stroke-opacity: .8;
+}
+
+/* .......................................................................... */
+.gsuiOscillator-remove,
+.gsuiOscillator-waveBtn,
+.gsuiOscillator-waveSelect {
+	border: 0;
+	padding: 0;
+	outline: 0;
+	cursor: pointer;
+	color: inherit;
+	background: none;
+	opacity: .5;
+	transition: .1s opacity;
+}
+.gsuiOscillator-waveBtn {
+	width: 14px;
+	font-size: 16px;
+	text-align: center;
+}
+.gsuiOscillator-remove {
+	position: absolute;
+	inset: 0 2px auto auto;
+	outline: 0;
+	font-size: 12px;
+	background: none;
+}
+.gsuiOscillator-waveBtn:focus-visible,
+.gsuiOscillator-waveBtn:hover,
+.gsuiOscillator-waveSelect:focus-visible,
+.gsuiOscillator-waveSelect:hover,
+.gsuiOscillator-remove:focus-visible,
+.gsuiOscillator-remove:hover {
+	opacity: 1;
+}
+
+/* .......................................................................... */
+.gsuiOscillator-waveSelect {
+	flex: 1;
+	padding-left: 6px;
+	font-size: 12px;
+	font-family: inherit;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+.gsuiOscillator-waveOpt {
+	background-color: var( --gsuiOscillator-wave-option );
+}
+.gsuiOscillator-waveOptNative {
+	background-color: var( --gsuiOscillator-wave-optionNative );
+}
+
+/* .......................................................................... */
+.gsuiOscillator-unisonGraph {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 10px;
+}
+.gsuiOscillator-unisonGraph-voices {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto 0;
+	width: 100%;
+	min-height: 3px;
+	pointer-events: none;
+}
+.gsuiOscillator-unisonGraph-voice {
+	height: 3px;
+	min-width: 1px;
+	border-radius: 3px;
+	background-color: var( --gsuiOscillator-unison );
+	opacity: .75;
+}
+.gsuiOscillator-unisonGraph-voice:only-child {
+	margin: auto 0;
+}
+
+/* .......................................................................... */
+.gsuiOscillator-unison {
+	grid-area: unison;
+	display: flex;
+	gap: 5px;
+	--gsuiSlider-lineColor: var( --gsuiOscillator-unison );
+}
+.gsuiOscillator-unison gsui-slider + gsui-slider {
+	width: 6px;
+	min-width: 6px;
+}
+.gsuiOscillator-unison gsui-slider .gsuiSlider-eventCatcher {
+	inset: -3px;
+}

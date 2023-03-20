@@ -1,0 +1,203 @@
+gsui-channel {
+	box-sizing: border-box;
+	display: flex;
+	position: relative;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 50px;
+	min-width: 50px;
+	border-left: 2px solid #ffffff11;
+	border-right: 2px solid #0000003b;
+	background-color: var( --gsuiChannel-bg, var( --gsui-item-bg ) );
+	transition: .2s background-color;
+}
+gsui-mixer gsui-channel[ selected ] {
+	background-color: var( --gsui-item-bg-selected );
+	--gsuiChannel-name-weight: bold;
+	--gsuiChannel-name-shadow: inset 0 -2px var( --gsuiChannel-gain-color );
+}
+gsui-channel[ muted ] {
+	--gsuiChannel-bg: var( --gsui-item-bg-disabled );
+	--gsuiChannel-name-opacity: .5;
+	--gsuiChannel-slider-color: #fff5;
+}
+
+/* .......................................................................... */
+.gsuiChannel-headBtn {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	top: 2px;
+	right: 2px;
+	border: 0;
+	padding: 0;
+	outline: 0;
+	color: inherit;
+	cursor: pointer;
+	font-size: 8px;
+	line-height: 1em;
+	background: none;
+	transition: opacity .2s;
+	opacity: 0;
+}
+gsui-channel:hover .gsuiChannel-headBtn {
+	opacity: .5;
+}
+gsui-channel .gsuiChannel-headBtn:focus-visible,
+gsui-channel .gsuiChannel-headBtn:hover {
+	opacity: 1;
+}
+.gsuiChannel-rename {
+	right: 14px;
+}
+.gsuiChannel-delete {
+	font-size: 10px;
+}
+.gsuiChannels-panMain .gsuiChannel-headBtn {
+	display: none;
+}
+
+/* .......................................................................... */
+.gsuiChannel-nameWrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 100%;
+	border: 0;
+	outline: 0;
+	padding: 0 3px;
+	color: inherit;
+	height: 34px;
+	min-height: 34px;
+	font-size: 12px;
+	font-family: var( --gsuiChannel-name-font );
+	background-color: transparent;
+	box-shadow: var( --gsuiChannel-name-shadow, none );
+	transition: inherit;
+	transition-property: box-shadow;
+}
+.gsuiChannel-name {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-size: 9px;
+	font-weight: var( --gsuiChannel-name-weight, normal );
+	user-select: none;
+	opacity: var( --gsuiChannel-name-opacity, 1 );
+}
+
+/* .......................................................................... */
+.gsuiChannel-analyser {
+	position: relative;
+	overflow: hidden;
+	flex: 2;
+	width: inherit;
+	margin-left: 0;
+	min-height: 16px;
+}
+gsui-channel gsui-analyser {
+	height: 100%;
+	opacity: .8;
+}
+.gsuiChannel-effects {
+	display: grid;
+	position: absolute;
+	inset: auto 0 0;
+}
+.gsuiChannel-effect {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 12px;
+	border: 0;
+	color: inherit;
+	font-family: inherit;
+	font-size: 6px;
+	cursor: pointer;
+	border-top: 1px solid #222;
+	border-left: 2px solid #ffffff08;
+	border-right: 2px solid #0002;
+	background-color: #333;
+}
+.gsuiChannel-effect:focus-visible,
+.gsuiChannel-effect:hover {
+	background-color: #3a3a3a;
+}
+.gsuiChannel-effect-name {
+	pointer-events: none;
+	opacity: .3;
+}
+.gsuiChannel-effect-enable .gsuiChannel-effect-name {
+	opacity: 1;
+}
+
+/* .......................................................................... */
+gsui-channel gsui-toggle {
+	width: 100%;
+	min-height: 18px;
+}
+
+/* .......................................................................... */
+.gsuiChannel-pan {
+	width: 100%;
+	height: 24px;
+	min-height: 24px;
+	z-index: 1;
+	overflow: hidden;
+	--gsuiSlider-lineColor: var( --gsuiChannel-slider-color, var( --gsuiChannel-pan-color ) );
+}
+.gsuiChannel-gain {
+	flex: 1;
+	width: 6px;
+	min-height: 32px;
+	margin-top: 6px;
+	--gsuiSlider-lineColor: var( --gsuiChannel-slider-color, var( --gsuiChannel-gain-color ) );
+}
+.gsuiChannel-gain .gsuiSlider-eventCatcher {
+	left: -12px;
+	right: -12px;
+}
+
+/* .......................................................................... */
+.gsuiChannel-connect {
+	width: 100%;
+	border: 0;
+	padding: 0;
+	outline: 0;
+	z-index: 1;
+	height: 16px;
+	min-height: 16px;
+	cursor: pointer;
+	font-size: 16px;
+	background-color: transparent;
+}
+.gsuiChannel-connectA {
+	color: var( --gsuiChannel-connect-output-color );
+}
+.gsuiChannel-connectB {
+	color: var( --gsuiChannel-connect-input-color );
+}
+
+/* .......................................................................... */
+.gsuiChannel-grip {
+	width: 100%;
+	height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	cursor: grab;
+	opacity: .6;
+	background-color: #0002;
+}
+.gsuiMixer-panMain .gsuiChannel-grip {
+	visibility: hidden;
+	pointer-events: none;
+}

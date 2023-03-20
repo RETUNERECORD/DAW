@@ -1,0 +1,55 @@
+gsui-daw {
+	--radius: 4px;
+	--gap: 4px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	color: var( --gsuiDAW-color );
+	font-size: 16px;
+	background-color: var( --gsuiDAW-bg );
+}
+
+/* .......................................................................... */
+.gsuiDAW-head {
+	display: grid;
+	padding: var( --gap );
+	gap: var( --gap );
+	grid-template:
+		"areaUser    areaCtrl    areaHist    areaHelp" 28px
+		"areaSave    areaTime    areaWins    areaVers" 20px
+		/min-content min-content min-content 1fr;
+}
+.gsuiDAW-area {
+	display: flex;
+	gap: inherit;
+}
+.gsuiDAW-resources {
+	display: flex;
+	width: 300px;
+	min-width: 330px;
+	max-width: 700px;
+	border-right: 3px solid #555;
+	background-color: #444;
+	transition: margin-left .2s;
+}
+.gsuiDAW-resources-closed {
+	margin-left: calc( var( --gsuiDAW-panel-margin, 0 ) - 3px );
+}
+.gsuiDAW-libraries {
+	flex: 1;
+	border: inherit;
+	border-right-width: 2px;
+}
+.gsuiDAW-patterns {
+	flex: 1;
+}
+.gsuiDAW-windows {
+	flex: 1;
+	z-index: 0;
+	background-color: var( --gsuiDAW-content-bg );
+	background-image: url( "data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E" );
+	background-attachment: local;
+}

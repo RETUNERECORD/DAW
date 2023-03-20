@@ -1,0 +1,41 @@
+body {
+	color-scheme: dark;
+	--gsui-rgb-pan: 221, 153, 255;                      /* #d9f */
+	--gsui-rgb-gain: 255, 255, 153;                     /* #ff9 */
+	--gsui-rgb-time: 255, 119, 119;                     /* #f77 */
+	--gsui-rgb-detune: 255, 255, 255;                   /* #fff */
+	--gsui-rgb-unison: 255, 153,  85;                   /* #f95 */
+	--gsui-rgb-pattern: 85, 170, 204;                   /* #5ac */
+	--gsui-rgb-patternSelected: 255, 136, 136;          /* #f88 */
+	--gsui-rgb-currentTimeCursor: 255, 255, 153;        /* #ff9 */
+	--gsui-col-pan: rgb( var( --gsui-rgb-pan ) );
+	--gsui-col-gain: rgb( var( --gsui-rgb-gain ) );
+	--gsui-col-time: rgb( var( --gsui-rgb-time ) );
+	--gsui-col-detune: rgb( var( --gsui-rgb-detune ) );
+	--gsui-col-unison: rgb( var( --gsui-rgb-unison ) );
+	--gsui-col-pattern: rgb( var( --gsui-rgb-pattern ) );
+	--gsui-col-lowpass: #d96;
+	--gsui-col-patternSelected: rgb( var( --gsui-rgb-patternSelected ) );
+	--gsui-col-currentTimeCursor: rgb( var( --gsui-rgb-currentTimeCursor ) );
+
+	/* ...................................................................... */
+	--gsui-head-bg: #3a3a3a;
+	--gsui-items-bg: #474747;
+	--gsui-item-bg: #5c5c5c;
+	--gsui-item-more-bg: #fff2;
+	--gsui-item-bg-disabled: #505050;
+	--gsui-item-bg-selected: #616161;
+	--gsui-toggle-on: #ffa;
+	--gsui-toggle-off: #222;
+	--gsui-slider-bg: #0003;
+	--gsui-slider-bg-opaque: #444;
+	--gsuiSlider-lineBgColor: var( --gsui-slider-bg );
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #ddd #222;
+}
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background-color: #222; }
+::-webkit-scrollbar-thumb { background-color: #aaa; }

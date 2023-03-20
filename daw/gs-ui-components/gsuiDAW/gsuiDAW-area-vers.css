@@ -1,0 +1,18 @@
+.gsuiDAW-areaVers {
+	grid-area: areaVers;
+	justify-content: end;
+}
+.gsuiDAW-version {
+	font-family: var( --gsui-font-number );
+}
+.gsuiDAW-changelog.gsuiIcon {
+	width: auto;
+}
+.gsuiDAW-version,
+.gsuiDAW-changelog {
+	opacity: .3;
+}
+.gsuiDAW-version:focus,
+.gsuiDAW-version:hover {
+	opacity: 1;
+}
