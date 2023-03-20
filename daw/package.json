@@ -8,15 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RETUNERECORD/DAW.git"
+    "url": "github.com/RETUNERECORD/DAW/tree/main/daw"
   },
   "keywords": [
-    "RETUNERECORD"
+    "DAW"
   ],
-  "author": "RETUNERECORD",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RETUNERECORD/DAW/issues"
-  },
-  "homepage": "https://github.com/RETUNERECORD/DAW#readme"
+  "author": "DAW",
+  "license": "ISC"
 }

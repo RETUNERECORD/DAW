@@ -1,6 +1,6 @@
 {
-	"name": "GridSound",
-	"short_name": "GS",
+	"name": "DAW",
+	"short_name": "DAW",
 	"description": "A free digital audio workstation",
 	"start_url": "/daw/",
 	"scope": "/daw/",
