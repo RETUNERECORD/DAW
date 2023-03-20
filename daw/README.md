@@ -1,4 +1,4 @@
-# GridSound [<img height="26" src="https://gridsound.com/social-images/twitter.png" title="twitter"/>](https://twitter.com/gridsound) [<img height="26" src="https://gridsound.com/social-images/facebook.png" title="facebook"/>](https://facebook.com/gridsound)
+# REMAKE from GridSound For Educations Prospect Making Project with etc D>A>W [<img height="26" src="https://gridsound.com/social-images/twitter.png" title="twitter"/>](https://twitter.com/gridsound) [<img height="26" src="https://gridsound.com/social-images/facebook.png" title="facebook"/>](https://facebook.com/gridsound)
 
 <img align="right" height="110" src="https://gridsound.com/assets/icon/black/128.png"/>
 
