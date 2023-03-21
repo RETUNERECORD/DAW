@@ -12,7 +12,7 @@
 	url = https://github.com/RETUNERECORD/DAW/tree/main/daw/assets
 [submodule "gs-components"]
 	path = gs-components
-	url = https://github.com/gridsound/gs-components
+	url = https://github.com/RETUNERECORD/DAW/tree/main/daw/gs-components
 [submodule "gs-wa-components"]
 	path = gs-wa-components
 	url = https://github.com/RETUNERECORD/DAW/tree/main/daw/gs-wa-components

@@ -1,7 +1,7 @@
 "use strict";
 
 class gsapiClient {
-	static url = "//localhost/gridsound/api.gridsound.com/api/";
+	static url = "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";
 	static headers = Object.freeze( {
 		"Content-Type": "application/json; charset=utf-8",
 	} );
