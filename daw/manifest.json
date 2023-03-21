@@ -2,7 +2,7 @@
 	"name": "Squencer",
 	"short_name": "GroundSqencer",
 	"description": "An open source digital audio workstation",
-	"start_url": "daw",
+	"start_url": "index.html",
 	"scope": "/daw/src",
 	"display": "standalone",
 	"orientation": "landscape",
