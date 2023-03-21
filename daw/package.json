@@ -1,9 +1,12 @@
 {
   "description": "Digital Squencer Cloud",
   "main": "serviceWorker.js",
-  "repository": "https://github.com/xxxcoder-ui/squencer-indie.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxxcoder-ui/squencer-indie.git"
+  },
   "author": "SquencerWorld",
-  "license": "squencer",
+  "license": "MIT",
   "private": null,
   "scripts": {
     "start": "http-server dist",
@@ -25,5 +28,14 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0"
-  }
+  },
+  "name": "retunerecord",
+  "bugs": {
+    "url": "https://github.com/xxxcoder-ui/squencer-indie/issues"
+  },
+  "homepage": "https://github.com/xxxcoder-ui/squencer-indie#readme",
+  "version": "1.0.0",
+  "keywords": [
+    "retunerecord"
+  ]
 }
