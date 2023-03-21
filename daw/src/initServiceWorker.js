@@ -1,7 +1,9 @@
 "use strict";
 
-if ( navigator.serviceWorker ) {
-	navigator.serviceWorker.register( "serviceWorker.js" )
+if ( navigator.serviceWorker &&
+	document.cookie.indexOf( "cookieAccepted" ) > -1
+) {
+	navigator.serviceWorker.register( "service-Worker.js" )
 		.then( reg => {
 			console.log( `Service worker ${
 				reg.installing ? "installing" :

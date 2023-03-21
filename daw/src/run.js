@@ -1,43 +1,110 @@
 "use strict";
 
-document.addEventListener( "gsuiEvents", ( { detail: d } ) => {
-	console.warn( `uncatched gsuiEvent: [${ d.component }][${ d.eventName }]`, d.args );
-} );
+UIloading().then( UIrun ).then( UIloaded );
 
-new Promise( resolve => {
-	const el = document.querySelector( "#splashScreen" );
-	const elTitle = document.querySelector( "#splashScreen-title" );
-	const elStart = document.querySelector( "#splashScreen-start" );
-	const elForm = document.querySelector( "#splashScreen-form" );
-	const elCookies = document.querySelector( "[ name='cookies' ]" );
-	const glitch = new TextGlitch( elTitle );
+function UIrun() {
+	const DAW = new DAWCore(),
+		hash = new Map( location.hash
+			.substr( 1 )
+			.split( "&" )
+			.map( kv => kv.split( "=" ) )
+		);
 
-	el.classList.add( "loaded" );
-	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {
-		glitch.on();
-	}
-	elCookies.checked = localStorage.getItem( "cookieAccepted" ) === "1";
-	elForm.onchange = () => {
-		elStart.disabled = !elCookies.checked;
-	};
-	elStart.onclick = () => {
-		glitch.off();
-		el.classList.add( "starting" );
-		localStorage.setItem( "cookieAccepted", "1" );
-		setTimeout( resolve, 100 );
-	};
-	elForm.onchange();
-} )
-	.then( () => {
-		const daw = new GSDAW();
-
-		GSUI.$setAttribute( daw.rootElement, "version", document.querySelector( "#splashScreen-version" ).textContent );
-		daw.getDAWCore().$importCompositionsFromLocalStorage();
-		daw.newComposition();
-	} )
-	.then( () => {
-		const el = document.querySelector( "#splashScreen" );
-
-		el.classList.add( "started" );
-		setTimeout( () => el.remove(), 800 );
+	gswaPeriodicWaves.list.forEach( ( w, name ) => {
+		gsuiPeriodicWave.addWave( name, w.real, w.imag );
 	} );
+
+	window.DAW = DAW;
+	window.VERSION = "0.0.1";
+
+	window.UIdrums = new GSDrums();
+	window.UIeffects = new GSEffects();
+	window.UImixer = new GSMixer();
+	window.UIpatternroll = new GSPatternroll();
+	window.UIpatterns = new GSPatterns();
+	window.UIpianoroll = new GSPianoroll();
+	window.UIsynth = new GSSynth();
+
+	UIdomInit();
+	UIwindowsInit();
+
+	UIauthInit();
+	UIdrumsInit();
+	UImixerInit();
+	UIsynthInit();
+	UIcookieInit();
+	UIeffectsInit();
+	UIhistoryInit();
+	UIcontrolsInit();
+	UIkeyboardInit();
+	UIpatternsInit();
+	UIpianorollInit();
+	UIaboutPopupInit();
+	UIpatternrollInit();
+	UIrenderPopupInit();
+	UImainAnalyserInit();
+	UIcompositionsInit();
+	UIsettingsPopupInit();
+	UIshortcutsPopupInit();
+
+	window.onblur = () => UIpianoroll.getUIKeys().midiReleaseAllKeys();
+	window.onkeyup = UIkeyboardUp;
+	window.onkeydown = UIkeyboardDown;
+	window.onbeforeunload = UIcompositionBeforeUnload;
+	document.body.ondrop = UIdrop;
+	document.body.ondragover = () => false;
+	document.addEventListener( "wheel", e => {
+		if ( e.ctrlKey ) {
+			e.preventDefault();
+		}
+	}, { passive: false } );
+	document.addEventListener( "drop", e => {
+		DAW.dropAudioFiles( e.dataTransfer.files );
+	} );
+
+	DAW.cb.focusOn = UIcontrolsFocusOn;
+	DAW.cb.currentTime = UIcontrolsCurrentTime;
+	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+	DAW.cb.buffersLoaded = UIpatternsBuffersLoaded;
+	DAW.cb.compositionAdded = UIcompositionAdded;
+	DAW.cb.compositionOpened = UIcompositionOpened;
+	DAW.cb.compositionClosed = UIcompositionClosed;
+	DAW.cb.compositionChanged = UIcompositionChanged;
+	DAW.cb.compositionDeleted = UIcompositionDeleted;
+	DAW.cb.compositionLoading = UIcompositionLoading;
+	DAW.cb.compositionSavedStatus = UIcompositionSavedStatus;
+	DAW.cb.compositionSavingPromise = UIauthSaveComposition;
+	DAW.cb.onstartdrum = rowId => UIdrums.onstartdrum( rowId );
+	DAW.cb.onstopdrumrow = rowId => UIdrums.onstopdrumrow( rowId );
+	DAW.cb.analyserFilled = UImainAnalyser.draw.bind( UImainAnalyser );
+	DAW.cb.channelAnalyserFilled = UImixer.updateAudioData.bind( UImixer );
+	DAW.cb.pause =
+	DAW.cb.stop = () => DOM.play.dataset.icon = "play";
+	DAW.cb.play = () => DOM.play.dataset.icon = "pause";
+
+	DOM.versionNum.textContent =
+	DOM.headVersionNum.textContent = window.VERSION;
+
+	DOM.winBtnsMap.forEach( ( btn, id ) => id !== "effects" && id !== "drums" && btn.click() );
+
+	UIauthGetMe();
+	DAW.addCompositionsFromLocalStorage();
+
+	document.addEventListener( "gsuiEvents", e => {
+		const { component, eventName, args } = e.detail;
+
+		console.warn( `uncatched gsuiEvent: [${ component }][${ eventName }]`, args );
+	} );
+
+	if ( !hash.has( "cmp" ) ) {
+		UIcompositionClickNewLocal();
+	} else {
+		DAW.addCompositionByURL( hash.get( "cmp" ) )
+			.catch( e => {
+				console.error( e );
+				return DAW.addNewComposition();
+			} )
+			.then( cmp => DAW.openComposition( "local", cmp.id ) );
+		location.hash = "";
+	}
+}
