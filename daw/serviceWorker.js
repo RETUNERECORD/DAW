@@ -4,10 +4,12 @@ self.addEventListener( "install", e => {
 	e.waitUntil( caches.open( "daw" ).then( cache => (
 		cache.addAll( [
 			"/daw/",
+			"/daw/src/",
 			"/daw/index.html",
 			"/daw/manifest.json",
 			"/assets/favicon.png",
 			"/assets/gswaPeriodicWavesList-v1.js",
+			"/assets/gsuiLibrarySamples-v1.js",
 			"/assets/fonts/fa-brands-400.woff2",
 			"/assets/fonts/fa-duotone-900.woff2",
 			"/assets/fonts/oswald-400-latin.woff2",
